@@ -99,9 +99,4 @@ class Solution implements SolutionInterface {
 		if(!is_array($this->cache[$a])) $this->cache[$a] = array();
 		$this->cache[$a][$b] = $value;
 	}
-
-	public function isWorking()
-	{
-		return true;
-	}
 }

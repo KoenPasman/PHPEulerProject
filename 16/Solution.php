@@ -1,4 +1,10 @@
 <?php
+/*************************************************************************
+ * Project Euler Problem 16 (http://projecteuler.net/problem=16)
+ *
+ * A PHP implementation by Koen Pasman
+ * http://koenpasman.nl
+*************************************************************************/
 
 class Solution implements SolutionInterface
 {
@@ -15,10 +21,5 @@ class Solution implements SolutionInterface
 		}
 
 		return 'Sum is ' . $sum;
-	}
-
-	public function isWorking() 
-	{
-		return true;
 	}
 }

@@ -1,4 +1,10 @@
 <?php
+/*************************************************************************
+ * Project Euler Problem 25 (http://projecteuler.net/problem=25)
+ *
+ * A PHP implementation by Koen Pasman
+ * http://koenpasman.nl
+*************************************************************************/
 
 class Solution implements SolutionInterface 
 {
@@ -8,7 +14,6 @@ class Solution implements SolutionInterface
 
 	public function solve()
 	{
-
 		// init cache
 		$this->fiboCache[1] = 1;
 		$this->fiboCache[2] = 1;
@@ -41,10 +46,4 @@ class Solution implements SolutionInterface
 			return $fiboN;
 		}
 	}
-
-	public function isWorking() 
-	{
-		return true;
-	}
-
 }

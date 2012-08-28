@@ -73,9 +73,4 @@ class Solution implements SolutionInterface
 		}
 		return null;
 	}
-
-	public function isWorking() 
-	{
-		return true;
-	}
 }

@@ -1,4 +1,10 @@
 <?php
+/*************************************************************************
+ * Project Euler Problem 6 (http://projecteuler.net/problem=6)
+ *
+ * A PHP implementation by Koen Pasman
+ * http://koenpasman.nl
+*************************************************************************/
 
 class Solution implements SolutionInterface 
 {
@@ -16,11 +22,5 @@ class Solution implements SolutionInterface
 		}
 
 		return 'difference is ' . $difference;
-
-	}
-
-	public function isWorking() 
-	{
-		return true;
 	}
 }

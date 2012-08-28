@@ -6,8 +6,6 @@
  * http://koenpasman.nl
 *************************************************************************/
 
-error_reporting(E_ALL & ~E_WARNING);
-
 class Solution implements SolutionInterface {
 
 	public function solve() 
@@ -47,10 +45,5 @@ class Solution implements SolutionInterface {
 		}
 
 		return $final;
-	}
-
-	public function isWorking()
-	{
-		return true;
 	}
 }
