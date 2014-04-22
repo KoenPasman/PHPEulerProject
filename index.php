@@ -36,7 +36,7 @@ else if($problem != null && is_dir($problem))
 		echo $solution->solve();
 		$end = microtime(true);
 		
-		echo '<p>Execution time: ' . round($end - $start, 1) . 'ms</p>';
+		echo '<p>Execution time: ' . round($end - $start, 3) . 's</p>';
 	}
 	else
 	{
