@@ -1,21 +1,19 @@
 <?php
+
 /*************************************************************************
  * Project Euler Problem 36 (http://projecteuler.net/problem=36)
  *
  * A PHP implementation by Koen Pasman
  * http://koenpasman.nl
  *************************************************************************/
-
 class Solution implements SolutionInterface
 {
 
     public function solve()
     {
-        $found = array();
-        for($i=10; $i<1000000; $i++)
-        {
-            if($this->isPalindrome($i) && $this->isPalindrome(decbin($i)))
-            {
+        $found = [];
+        for ($i = 10; $i < 1000000; $i++) {
+            if ($this->isPalindrome($i) && $this->isPalindrome(decbin($i))) {
                 $found[] = $i;
             }
         }
@@ -25,6 +23,6 @@ class Solution implements SolutionInterface
 
     public function isPalindrome($number)
     {
-        return (string) $number == (string) strrev($number);
+        return (string)$number == (string)strrev($number);
     }
 }

@@ -1,7 +1,8 @@
 <?php
 
-interface SolutionInterface {
+interface SolutionInterface
+{
 
-	public function solve();
+    public function solve();
 
 }

@@ -1,26 +1,35 @@
 <?php
+
 /*************************************************************************
  * Project Euler Problem 32 (http://projecteuler.net/problem=32)
  *
  * A PHP implementation by Koen Pasman
  * http://koenpasman.nl
  *************************************************************************/
-
 class Solution implements SolutionInterface
 {
+    /**
+     * @var array
+     */
+    private $all;
+
+    /**
+     * @var array
+     */
+    private $products;
 
     public function __construct()
     {
-        $this->all = array();
-        $this->products = array(
-            array(1, 4),
-            array(1, 5),
-            array(2, 4),
-            array(2, 5),
-            array(3, 4),
-            array(3, 5),
-            array(4, 5)
-        );
+        $this->all = [];
+        $this->products = [
+            [1, 4],
+            [1, 5],
+            [2, 4],
+            [2, 5],
+            [3, 4],
+            [3, 5],
+            [4, 5]
+        ];
     }
 
     public function solve()
@@ -32,25 +41,22 @@ class Solution implements SolutionInterface
 
     /**
      *  Find all 1 through 9 pandigital numbers.
+     *
+     * @param $base
      */
     public function findPanDigitals($base = '')
     {
         // Find all shuffles of the string 123456789
-        for($i = 1; $i <= 9; $i++)
-        {
-            if(!empty($base) && strpos($base, (string) $i) !== false) continue;
+        for ($i = 1; $i <= 9; $i++) {
+            if (!empty($base) && strpos($base, (string)$i) !== false) continue;
 
-            $newBase = $base . ((string) $i);
+            $newBase = $base . ((string)$i);
 
-            if(strlen($newBase) < 9)
-            {
+            if (strlen($newBase) < 9) {
                 $this->findPanDigitals($newBase);
-            }
-            else
-            {
+            } else {
                 $this->all[] = $newBase;
             }
-
         }
     }
 
@@ -69,22 +75,19 @@ class Solution implements SolutionInterface
      */
     public function findProducts()
     {
-        $foundProducts = array();
-        foreach($this->all as $pandigital)
-        {
-            $pandigital = (string) $pandigital;
-            foreach($this->products as $product)
-            {
-                $wantedResult = (int) substr($pandigital, $product[1], strlen($pandigital) - $product[1]);
+        $foundProducts = [];
+        foreach ($this->all as $pandigital) {
+            $pandigital = (string)$pandigital;
+            foreach ($this->products as $product) {
+                $wantedResult = (int)substr($pandigital, $product[1], strlen($pandigital) - $product[1]);
 
                 // We can skip products we already found
-                if(in_array($wantedResult, $foundProducts)) continue;
+                if (in_array($wantedResult, $foundProducts)) continue;
 
-                $firstProduct = (int) substr($pandigital, 0, $product[0]);
-                $secondProduct = (int) substr($pandigital, $product[0], $product[1] - $product[0]);
+                $firstProduct = (int)substr($pandigital, 0, $product[0]);
+                $secondProduct = (int)substr($pandigital, $product[0], $product[1] - $product[0]);
                 $result = $firstProduct * $secondProduct;
-                if($result == $wantedResult)
-                {
+                if ($result == $wantedResult) {
                     $foundProducts[] = $wantedResult;
                 }
             }
@@ -92,4 +95,5 @@ class Solution implements SolutionInterface
 
         return $foundProducts;
     }
+
 }
