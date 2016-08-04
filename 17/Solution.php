@@ -3,8 +3,6 @@
 /*************************************************************************
  * Project Euler Problem 17 (http://projecteuler.net/problem=17)
  *
- * @todo This implementation is incorrect so far!
- *
  * A PHP implementation by Koen Pasman
  * http://koenpasman.nl
  *************************************************************************/
