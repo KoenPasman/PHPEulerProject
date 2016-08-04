@@ -3,15 +3,12 @@
 /*************************************************************************
  * Project Euler Problem 15 (http://projecteuler.net/problem=15)
  *
- * @todo This implementation is incorrect so far!
- *
  * A PHP implementation by Koen Pasman
  * http://koenpasman.nl
  *************************************************************************/
 class Solution implements SolutionInterface
 {
-
-    private static $NUMBER_OF_SQUARES = 22;
+    private static $NUMBER_OF_SQUARES = 20;
     private $cache = [];
 
     public function solve()
@@ -50,55 +47,67 @@ class Solution implements SolutionInterface
         $result = $this->pascalTriangle(self::$NUMBER_OF_SQUARES, self::$NUMBER_OF_SQUARES);
 
         return 'Number of ways in a grid: ' . $result;
-
     }
 
 
     /**
-     * Recursively calculate the edges in the Pascal Triangle
+     * Recursively calculate the edges in the Pascal Triangle.
+     *
+     * @param int $x
+     * @param int $y
      * @return integer
      **/
-    public function pascalTriangle($a, $b)
+    public function pascalTriangle($x, $y)
     {
-        if ($this->inCache($a, $b)) return $this->fromCache($a, $b);
+        if ($this->inCache($x, $y)) return $this->fromCache($x, $y);
 
-        if ($a == 0 || $b == 0) {
+        if ($x == 0 || $y == 0) {
             // always 1, cache and return
-            $this->toCache($a, $b, 1);
+            $this->toCache($x, $y, 1);
             return 1;
         }
 
-        $totalWays = $this->pascalTriangle($a - 1, $b) + $this->pascalTriangle($a, $b - 1);
-        $this->toCache($a, $b, $totalWays);
+        $totalWays = $this->pascalTriangle($x - 1, $y) + $this->pascalTriangle($x, $y - 1);
+        $this->toCache($x, $y, $totalWays);
 
         return $totalWays;
     }
 
     /**
-     * Check if the result for a node is in the cache
+     * Check if the result for a node is in the cache.
+     *
+     * @param int $x
+     * @param int $y
      * @return boolean whether or not the node distance is in the cache available
      **/
-    private function inCache($a, $b)
+    private function inCache($x, $y)
     {
-        return isset($this->cache[$a][$b]);
+        return isset($this->cache[$x][$y]);
     }
 
     /**
-     * Fetch result from cache, knowing that it is available in cache
-     * @return Integer for the distance in a node to the target node
+     * Fetch result from cache, knowing that it is available in cache.
+     *
+     * @param int $x
+     * @param int $y
+     * @return integer for the distance in a node to the target node
      **/
-    private function fromCache($a, $b)
+    private function fromCache($x, $y)
     {
-        return $this->cache[$a][$b];
+        return $this->cache[$x][$y];
     }
 
     /**
      * Add distance to cache
+     *
+     * @param int $x
+     * @param int $y
+     * @param int $value Calculated value for edge (x, y) on the Pascal triangle.
      * @return null
      **/
-    private function toCache($a, $b, $value)
+    private function toCache($x, $y, $value)
     {
-        if (!is_array($this->cache[$a])) $this->cache[$a] = array();
-        $this->cache[$a][$b] = $value;
+        if (!is_array($this->cache[$x])) $this->cache[$x] = array();
+        $this->cache[$x][$y] = $value;
     }
 }
