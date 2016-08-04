@@ -3,8 +3,6 @@
 /*************************************************************************
  * Project Euler Problem 36 (http://projecteuler.net/problem=36)
  *
- * @todo This implementation is incorrect so far!
- *
  * A PHP implementation by Koen Pasman
  * http://koenpasman.nl
  *************************************************************************/
@@ -14,7 +12,7 @@ class Solution implements SolutionInterface
     public function solve()
     {
         $found = [];
-        for ($i = 10; $i < 1000000; $i++) {
+        for ($i = 1; $i < 1000000; $i++) {
             if ($this->isPalindrome($i) && $this->isPalindrome(decbin($i))) {
                 $found[] = $i;
             }
